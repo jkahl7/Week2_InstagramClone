@@ -12,20 +12,24 @@
 	<dict>
 		<key>A1F9697C287118A0B8E3F3995A86CE633FBA7A47</key>
 		<string>https://github.com/jkahl7/week1TwitterClone.git</string>
+		<key>EA11D2A97278ADC1E5F81A4F083584A2A9E08BBF</key>
+		<string>https://github.com/jkahl7/Week2_InstagramClone.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PicFilter/PicFilter.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A1F9697C287118A0B8E3F3995A86CE633FBA7A47</key>
+		<string>../../../../CodeFellowsHW</string>
+		<key>EA11D2A97278ADC1E5F81A4F083584A2A9E08BBF</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/jkahl7/week1TwitterClone.git</string>
+	<string>https://github.com/jkahl7/Week2_InstagramClone.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A1F9697C287118A0B8E3F3995A86CE633FBA7A47</string>
+	<string>EA11D2A97278ADC1E5F81A4F083584A2A9E08BBF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>A1F9697C287118A0B8E3F3995A86CE633FBA7A47</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CodeFellowsHW</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EA11D2A97278ADC1E5F81A4F083584A2A9E08BBF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>xcode_stuff</string>
 		</dict>
 	</array>
 </dict>

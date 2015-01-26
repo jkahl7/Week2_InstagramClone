@@ -9,19 +9,20 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
 
   var window: UIWindow?
 
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+  {
     //creates a UIWindow object with its screen property set to mainScreen which returns a screen object which represents the devices screen - the mainScreens object is set by the bounds property
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     //makes the reciever the mainwinodw and makes it visible
     self.window?.makeKeyAndVisible()
     //instantiates a ViewController object and assigns it to the variable rootVC
-    var rootVC = homeViewController()
-    
+    var rootVC        = homeViewController()
     let navController = UINavigationController(rootViewController: rootVC)
     
      self.window?.rootViewController = navController
