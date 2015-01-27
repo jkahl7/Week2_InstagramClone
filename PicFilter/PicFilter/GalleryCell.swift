@@ -8,30 +8,38 @@
 
 import UIKit
 
-class GalleryCell: UICollectionViewCell {
-  //let rootView = UIView(frame: UIScreen.mainScreen().bounds)
-  
+class GalleryCell: UICollectionViewCell
+{
   let imageView = UIImageView()
 
-  override init(frame: CGRect){
+  override init(frame : CGRect)
+  {
     super.init(frame: frame)
       self.addSubview(self.imageView)
-      self.backgroundColor = UIColor.whiteColor()
-      imageView.frame = self.bounds
-      imageView.contentMode =  UIViewContentMode.ScaleAspectFill
+    
+      self.backgroundColor          = UIColor.whiteColor()
+      imageView.frame               = self.bounds
+      imageView.contentMode         =  UIViewContentMode.ScaleAspectFill
       imageView.layer.masksToBounds = true
       imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
     
-    let views = ["cell":imageView]
+      let views = ["cell":imageView]
     
-      let cellConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|[cell]|", options: nil, metrics: nil, views: views)
+      let cellConstraintY = NSLayoutConstraint.constraintsWithVisualFormat("V:|[cell]|",
+                                                                      options: nil,
+                                                                      metrics: nil,
+                                                                        views: views)
       self.addConstraints(cellConstraintY)
       
-      let cellConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|[cell]|", options: nil, metrics: nil, views: views)
+      let cellConstraintX = NSLayoutConstraint.constraintsWithVisualFormat("H:|[cell]|",
+                                                                      options: nil,
+                                                                      metrics: nil,
+                                                                        views: views)
       self.addConstraints(cellConstraintX)
   }
     
-  required init(coder aDecoder: NSCoder) {
+  required init(coder aDecoder: NSCoder)
+  {
     super.init(coder: aDecoder)
   }
 }

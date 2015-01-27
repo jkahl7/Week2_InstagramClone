@@ -9,7 +9,8 @@
 import UIKit
 
 
-protocol ImageSelectionProtocol {
+protocol ImageSelectionProtocol
+{
   /**************************************************************************************************
   ** this function will be defined in any class that adopts its protocol. this allows any object that sets
   ** a variable = to ImageSelectionProtocol to have access to the functions defined within other objects. so I can call this method in 
@@ -19,52 +20,63 @@ protocol ImageSelectionProtocol {
   func controllerDidSelectImage(UIImage) -> Void
 }
 
-class galleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class galleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+{
 
-  let imageCount:Int = 14 //TODO: dont forget to change this when an actually array is passed
-  var collectionView : UICollectionView!
-  var galleryImages = [UIImage]()
-  var delegate:ImageSelectionProtocol?
-  let collectionViewFlowLayout = UICollectionViewFlowLayout()
-  var rootView:UIView!
+  let imageCount : Int = 14 //TODO: dont forget to change this when an actually array is passed
   
-  override func loadView() {
-    self.rootView = UIView(frame: UIScreen.mainScreen().bounds)
-    self.collectionViewFlowLayout.itemSize = CGSize(width: 225, height: 175)
+  var collectionView : UICollectionView!
+  var rootView       : UIView!
+  var delegate       : ImageSelectionProtocol?
+  
+  var galleryImages            = [UIImage]()
+  let collectionViewFlowLayout = UICollectionViewFlowLayout()
+  
+  override func loadView()
+  {
+    self.rootView                                 = UIView(frame: UIScreen.mainScreen().bounds)
+    self.collectionViewFlowLayout.itemSize        = CGSize(width: 225, height: 175)
     self.collectionViewFlowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
-    self.collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    self.collectionViewFlowLayout.sectionInset    = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
-    self.collectionView = UICollectionView(frame: rootView.frame, collectionViewLayout: self.collectionViewFlowLayout)
+    self.collectionView = UICollectionView(frame: rootView.frame,
+                            collectionViewLayout: self.collectionViewFlowLayout)
     rootView.addSubview(self.collectionView)
     self.collectionView.backgroundColor = UIColor.whiteColor()
     
     self.rootView.addSubview(self.collectionView)
    
     self.collectionView.dataSource = self
-    self.collectionView.delegate = self
+    self.collectionView.delegate   = self
     
     
-    let pinchedGestureForCV = UIPinchGestureRecognizer(target: self, action: "collectionViewPinchedGesture:")
+    let pinchedGestureForCV = UIPinchGestureRecognizer(target: self,
+                                                       action: "collectionViewPinchedGesture:")
+    
     self.collectionView.addGestureRecognizer(pinchedGestureForCV)
 
     self.view = rootView
   }
 
-  override func viewDidLoad() {
-      super.viewDidLoad()
+  override func viewDidLoad()
+  {
+    super.viewDidLoad()
     self.view.backgroundColor = UIColor.blackColor()
     self.collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "GALLERYCELL")
     
     //populate the galleryImages
-    for (var i = 0; i < imageCount; i++) {
+    for (var i = 0; i < imageCount; i++)
+    {
       let image = UIImage(named: "image\(i).jpeg")
       
       galleryImages.append(image!)
     }
   }
   
-  func collectionViewPinchedGesture(sender: UIPinchGestureRecognizer) {
-    switch sender.state {
+  func collectionViewPinchedGesture(sender: UIPinchGestureRecognizer)
+  {
+    switch sender.state
+    {
     case .Began:
       println("touch started")
     case .Changed:
@@ -72,9 +84,11 @@ class galleryViewController: UIViewController, UICollectionViewDataSource, UICol
     case .Ended:
       self.collectionView.performBatchUpdates({ () -> Void in
         if (sender.velocity > 0) {
-          self.collectionViewFlowLayout.itemSize = CGSize(width: (self.collectionViewFlowLayout.itemSize.width) * 2 , height: (self.collectionViewFlowLayout.itemSize.height) * 2)
+          self.collectionViewFlowLayout.itemSize = CGSize(width: (self.collectionViewFlowLayout.itemSize.width) * 2 ,
+                                                         height: (self.collectionViewFlowLayout.itemSize.height) * 2)
         } else if (sender.velocity < 0) {
-          self.collectionViewFlowLayout.itemSize = CGSize(width: (self.collectionViewFlowLayout.itemSize.width) * 0.5, height: (self.collectionViewFlowLayout.itemSize.height) * 0.5)
+          self.collectionViewFlowLayout.itemSize = CGSize(width: (self.collectionViewFlowLayout.itemSize.width) * 0.5,
+                                                         height: (self.collectionViewFlowLayout.itemSize.height) * 0.5)
         }
       }, completion: { (completed) -> Void in
         
@@ -85,17 +99,20 @@ class galleryViewController: UIViewController, UICollectionViewDataSource, UICol
   }
   
   
-  override func didReceiveMemoryWarning() {
+  override func didReceiveMemoryWarning()
+  {
       super.didReceiveMemoryWarning()
   }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
       return self.galleryImages.count
       
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GALLERYCELL", forIndexPath: indexPath) as GalleryCell
 
       cell.imageView.image = self.galleryImages[indexPath.row]
